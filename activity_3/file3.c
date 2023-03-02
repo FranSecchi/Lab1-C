@@ -23,7 +23,6 @@ int main(int argc, char *argv[]) {
     int first_request = 1;
     int port = DEFAULTPORT;
     int num_lines = 0;
-    char file_name;
 
     /* Check input arguments */
     if (argc > 3 || argc <= 1) {
@@ -36,13 +35,12 @@ int main(int argc, char *argv[]) {
             exit(1);
         }
         port = atoi(argv[2]);
-        file_name = *argv[1];
     }
 
     /*Save file info*/
     FILE *fp = fopen(argv[1], "r");
     if (fp == NULL) {
-        err_sys("Error opening file: " + file_name);
+        err_sys("Error opening file: " + *argv[1]);
     }
     int letters[MAX_LINES];
     char line[MAX_LINE_LENGTH];
